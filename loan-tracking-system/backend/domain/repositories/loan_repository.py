@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 from domain.entities.loan import Loan
+from infrastructure.database.db import SessionLocal
 
 class LoanRepository(ABC):
     @abstractmethod
