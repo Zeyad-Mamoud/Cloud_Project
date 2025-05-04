@@ -12,6 +12,7 @@ class ContactCreate(BaseModel):
 
 @router.post("/", response_model=Contact)
 def create_contact(contact: ContactCreate, repo=Depends(get_contact_repository)):
+<<<<<<< HEAD
     contact_entity = Contact(id=None, name=contacts)
 
 
@@ -40,3 +41,6 @@ class ContactModel(Base):
     name = Column(String, nullable=False)
     phone = Column(String)
     email = Column(String)
+=======
+    contact_entity = Contact(id=None, name=contact.name, phone=contact.phone, email=contact.email)
+>>>>>>> 56581ac6b4533e53f0538d1f3dc0b405a905d0bd

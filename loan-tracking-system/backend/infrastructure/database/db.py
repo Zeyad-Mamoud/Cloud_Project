@@ -6,12 +6,19 @@ from domain.repositories.reminder_repositery import ReminderRepository
 from domain.repositories.repayment_repositry import RepaymentRepository
 from domain.entities.loan import Loan
 from domain.entities.contact import Contact
+<<<<<<< HEAD
 from domain.entities.reminder import Reminder
 from domain.entities.repayment import Repayment
 
 from typing import List
 
 DATABASE_URL = "postgresql://user:0000@db:5433/loan_db"
+=======
+from infrastructure.database.models import LoanModel, ContactModel
+from typing import List
+
+DATABASE_URL = "postgresql://postgres:0000@db:5432/loan_DB"
+>>>>>>> 56581ac6b4533e53f0538d1f3dc0b405a905d0bd
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -68,13 +75,3 @@ def get_loan_repository():
 def get_contact_repository():
     return SQLAlchemyContactRepository()
 
-# def create_database():
-#     # This function should create the database and tables if they do not exist
-#     pass  
-#         CREATE DATABASE "loan_DB"
-#             WITH
-#             OWNER = postgres
-#             ENCODING = 'UTF8'
-#             LOCALE_PROVIDER = 'libc'
-#             CONNECTION LIMIT = -1
-#             IS_TEMPLATE = False;
