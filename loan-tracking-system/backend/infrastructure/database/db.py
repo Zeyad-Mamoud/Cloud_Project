@@ -6,7 +6,7 @@ from domain.entities.loan import Loan
 from domain.entities.contact import Contact
 from typing import List
 
-DATABASE_URL = "postgresql://user:password@db:5432/loan_db"
+DATABASE_URL = "postgresql://user:0000@db:5432/loan_db"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -62,3 +62,14 @@ def get_loan_repository():
 
 def get_contact_repository():
     return SQLAlchemyContactRepository()
+
+# def create_database():
+#     # This function should create the database and tables if they do not exist
+#     pass  
+#         CREATE DATABASE "loan_DB"
+#             WITH
+#             OWNER = postgres
+#             ENCODING = 'UTF8'
+#             LOCALE_PROVIDER = 'libc'
+#             CONNECTION LIMIT = -1
+#             IS_TEMPLATE = False;
