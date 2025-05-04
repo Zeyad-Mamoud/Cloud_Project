@@ -4,6 +4,7 @@
 from sqlalchemy import Column, Integer, Float, Date, String, Enum, ForeignKey
 from sqlalchemy.orm import declarative_base
 from domain.entities.loan import LoanType, LoanStatus
+from domain.entities.reminder import ReminderStatus
 
 Base = declarative_base()
 
@@ -23,3 +24,11 @@ class ContactModel(Base):
     name = Column(String, nullable=False)
     phone = Column(String)
     email = Column(String)
+    
+class ReminderModel(Base):
+    __tablename__ = "reminders"
+    id = Column(Integer, primary_key=True)
+    loan_id = Column(Integer, ForeignKey("loans.id"), nullable=False)
+    remind_date = Column(Date, nullable=False)
+    status = Column(Enum(ReminderStatus), nullable=False)
+    created_at = Column(Date, nullable=False)
