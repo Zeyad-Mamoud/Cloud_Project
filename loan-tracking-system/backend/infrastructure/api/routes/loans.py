@@ -1,25 +1,29 @@
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
-from datetime import date
-from application.use_cases.add_loan import AddLoanUseCase
-from application.use_cases.update_loan import UpdateLoanUseCase
 from infrastructure.database.db import get_loan_repository
-from domain.entities.loan import Loan
+from domain.entities.loan import LoanType, Loan
+from application.use_cases.add_loan import AddLoanUseCase
+from datetime import datetime
+from fastapi import HTTPException
 
 router = APIRouter()
 
 class LoanCreate(BaseModel):
     amount: float
-    due_date: date
-    loan_type: str
+    due_date: str  
+    loan_type: LoanType
     contact_id: int
 
 @router.post("/", response_model=Loan)
 def create_loan(loan: LoanCreate, repo=Depends(get_loan_repository)):
-    use_case = AddLoanUseCase(repo)
-    return use_case.execute(loan.amount, loan.due_date, loan.loan_type, loan.contact_id)
-
-@router.put("/{loan_id}")
-def update_loan(loan_id: int, paid_amount: float = None, mark_as_paid: bool = False, repo=Depends(get_loan_repository)):
-    use_case = UpdateLoanUseCase(repo)
-    return use_case.execute(loan_id, paid_amount, mark_as_paid)
+    try:
+        use_case = AddLoanUseCase(repo)
+        due_date = datetime.strptime(loan.due_date, "%Y-%m-%d").date()
+        return use_case.execute(
+            amount=loan.amount,
+            due_date=due_date,
+            loan_type=loan.loan_type.value,
+            contact_id=loan.contact_id
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
