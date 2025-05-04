@@ -5,6 +5,7 @@ from domain.repositories.contact_repository import ContactRepository
 from domain.entities.loan import Loan
 from domain.entities.contact import Contact
 from typing import List
+from infrastructure.database.models import LoanModel, ContactModel
 
 DATABASE_URL = "postgresql://user:password@db:5432/loan_db"
 engine = create_engine(DATABASE_URL)
@@ -33,7 +34,8 @@ class SQLAlchemyLoanRepository(LoanRepository):
         with SessionLocal() as session:
             db_loan = session.query(LoanModel).filter(LoanModel.id == loan.id).first()
             for key, value in loan.__dict__.items():
-                setattr(db_loan, key, value)
+                if key != "id" and value is not None:
+                    setattr(db_loan, key, value)
             session.commit()
             session.refresh(db_loan)
             return Loan(**db_loan.__dict__)
