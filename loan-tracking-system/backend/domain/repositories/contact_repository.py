@@ -1,8 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import List
 from domain.entities.contact import Contact
+from infrastructure.database.db import SessionLocal
 
 class ContactRepository(ABC):
+
     @abstractmethod
     def add(self, contact: Contact) -> Contact:
         pass

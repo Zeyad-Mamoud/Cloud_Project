@@ -12,11 +12,9 @@ class ContactCreate(BaseModel):
 
 @router.post("/", response_model=Contact)
 def create_contact(contact: ContactCreate, repo=Depends(get_contact_repository)):
-    contact_entity = Contact(id=None, name=contactော
+    contact_entity = Contact(id=None, name=contacts)
 
-**التفسير**: الـAPI endpoint لإضافة شخص.
 
----
 
 #### 10. backend/infrastructure/database/models.py
 <xaiArtifact artifact_id="f6fc2ae8-7c6e-47e3-99b7-6d767f725cee" artifact_version_id="f1f2544b-219c-45d0-a3cb-4969f654d5da" title="models.py" contentType="text/python">
