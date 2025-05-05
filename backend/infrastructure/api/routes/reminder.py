@@ -8,7 +8,6 @@ from typing import Optional
 from infrastructure.database.db import get_reminder_repository
 from domain.entities.reminder import Reminder
 
-
 router = APIRouter(prefix="/reminders", tags=["reminders"])
 
 class ReminderCreate(BaseModel):
