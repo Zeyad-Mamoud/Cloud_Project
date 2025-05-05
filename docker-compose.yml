@@ -13,7 +13,15 @@ services:
       - "5432:5432"
     networks:
       - loan-tracking-network
-
+      
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/app
+      
   backend:
     build:
       context: ./backend
