@@ -1,27 +1,19 @@
-from domain.entities.loan import Loan
+from domain.entities.loan import Loan, LoanType, LoanStatus
+from domain.repositories.loan_repository import LoanRepository
 from datetime import date
-from typing import Optional
 
 class AddLoanUseCase:
-    def __init__(self, repository):
-        self.repository = repository
+    def __init__(self, loan_repository: LoanRepository):
+        self.loan_repository = loan_repository
 
-    def execute(
-        self,
-        amount: float,
-        due_date: date,
-        loan_type: str,
-        contact_id: int,
-        status: Optional[str] = None,
-        remaining_balance: Optional[float] = None
-    ) -> Loan:
+    def execute(self, amount: float, due_date: date, loan_type: str, contact_id: int) -> Loan:
         loan = Loan(
             id=None,
             amount=amount,
             due_date=due_date,
-            loan_type=loan_type,
+            loan_type=LoanType(loan_type),
             contact_id=contact_id,
-            status=status or "ACTIVE",  
-            remaining_balance=remaining_balance if remaining_balance is not None else amount
+            status=LoanStatus.ACTIVE,
+            remaining_balance=amount
         )
-        return self.repository.add(loan)
+        return self.loan_repository.add(loan)
