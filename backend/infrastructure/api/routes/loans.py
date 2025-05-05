@@ -6,7 +6,7 @@ from application.use_cases.update_loan import UpdateLoanUseCase
 from infrastructure.database.db import get_loan_repository
 from domain.entities.loan import Loan
 
-router = APIRouter(prefix="/loans", tags=["loans"])
+router = APIRouter()
 
 class LoanCreate(BaseModel):
     amount: float
