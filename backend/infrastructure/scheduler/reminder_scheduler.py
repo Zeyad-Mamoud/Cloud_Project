@@ -4,6 +4,8 @@ from infrastructure.database.db import get_db
 from sqlalchemy.orm import Session
 from domain.entities.loan import LoanStatus
 import logging
+from domain.entities.loan import Loan
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
