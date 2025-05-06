@@ -12,6 +12,7 @@ class LoanStatus(Enum):
     PAID = "PAID"
     PARTIALLY_PAID = "PARTIALLY_PAID"
     OVERDUE = "OVERDUE"
+    ACTIVE = "active"  
 
 @dataclass
 class Loan:

@@ -3,6 +3,8 @@
 first build 
 docker-compose up -d --build
 
+docker-compose up -d
+
 delete all containers and images
 docker-compose down --rmi all
 docker-compose down
