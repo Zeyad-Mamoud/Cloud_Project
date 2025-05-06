@@ -1,47 +1,41 @@
-Loan Tracking System
+# Cloud Project
 
-A system to track personal loans (borrowed or lent) with features to:
+## Overview
 
-Add a new loan with amount and due date.
+This is a cloud-based application designed using Clean Architecture principles. The project is divided into two main parts:
 
-Link a loan to a contact.
+- **Backend:** Implements the business logic, domain rules, and infrastructure services.
+- **Frontend:** Provides a user-friendly interface for the application.
 
-Mark a loan as paid or partially repaid.
+## Installation
 
-Receive automatic reminders.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Zeyad-Mamoud/Cloud_Project.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Cloud_Project
+   ```
 
-Setup
+### Using Docker
 
-Backend
+1. Build and run the containers:
+   ```bash
+   docker-compose up --build
+   ```
+2. Access the frontend at `http://localhost:3000` and the backend at `http://localhost:8000`.
 
-Navigate to backend/.
+## Project Structure
 
-Install dependencies: pip install -r requirements.txt.
+- **Backend:**
+  - `application/`: Contains use cases and business logic.
+  - `domain/`: Holds entities and core business rules.
+  - `infrastructure/`: Manages external services like Celery or databases.
+- **Frontend:**
+  - `src/`: Contains React components and logic.
 
-Run with Docker: docker-compose up.
+## Future Enhancements
 
-Frontend
-
-Navigate to frontend/.
-
-Install dependencies: npm install.
-
-Start development server: npm start.
-
-Deployment
-
-Backend: Deploy to Heroku with Dockerfile.
-
-Frontend: Deploy to Netlify or Vercel.
-
-Architecture
-
-Follows Clean Architecture with layers:
-
-Domain: Entities and Repositories.
-
-Application: Use Cases.
-
-Infrastructure: API and Database.
-
-Presentation: React frontend.
+- Add more detailed documentation.
+- Implement CI/CD pipeline for automated testing and deployment.
