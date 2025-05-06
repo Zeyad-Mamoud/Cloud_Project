@@ -1,7 +1,7 @@
-# backend/domain/repositories/repayment_repository.py
 from abc import ABC, abstractmethod
 from typing import List, Optional
 from domain.entities.repayment import Repayment
+from infrastructure.database.session import SessionLocal
 
 class RepaymentRepository(ABC):
 

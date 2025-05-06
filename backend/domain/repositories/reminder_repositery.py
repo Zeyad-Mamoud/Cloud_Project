@@ -1,21 +1,8 @@
-# backend/domain/repositories/reminder_repository.py
 from abc import ABC, abstractmethod
 from typing import List, Optional
 from domain.entities.reminder import Reminder
-from domain.repositories.reminder_repository import ReminderRepository
-from domain.entities.reminder import Reminder
-from infrastructure.database.models import ReminderModel
-
-
-class SQLAlchemyReminderRepository(ReminderRepository):
-    def __init__(self, session):
-        self.session = session
-        
-    def add(self, reminder: Reminder) -> Reminder:
-        # Implementation here
-        pass
-
-
+from infrastructure.database.session import SessionLocal
+from datetime import datetime
 
 class ReminderRepository(ABC):
 

@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 from domain.entities.contact import Contact
-from infrastructure.database.db import SessionLocal
+from infrastructure.database.session import SessionLocal
 
 class ContactRepository(ABC):
 

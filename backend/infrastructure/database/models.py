@@ -1,7 +1,8 @@
-from sqlalchemy import Column, Integer, Float, Date, String, Enum, ForeignKey
+from sqlalchemy import Column, Integer, Float, Date, String, Enum, ForeignKey, DateTime
 from sqlalchemy.orm import declarative_base
 from domain.entities.loan import LoanType, LoanStatus
 from domain.entities.reminder import ReminderStatus
+from datetime import datetime
 
 
 
@@ -14,7 +15,7 @@ class ContactModel(Base):
     name = Column(String, nullable=False)
     phone = Column(String)
     email = Column(String)
-    created_at = Column(Date, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
 
 
 class LoanModel(Base):

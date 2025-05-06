@@ -1,0 +1,35 @@
+// Project: Loan Tracking System
+
+first build 
+docker-compose up -d --build
+
+delete all containers and images
+docker-compose down --rmi all
+docker-compose down
+
+check the logs
+docker-compose logs -f
+
+# Or for specific services:
+docker-compose logs backend
+docker-compose logs frontend
+
+check the status of all containers
+docker-compose ps
+
+Test the backend API directly:
+curl http://localhost:8000
+
+Check database connectivity:
+docker-compose exec db psql -U postgres -d loan_db -c "SELECT 1;"
+
+check the frontend:
+docker-compose exec frontend curl http://localhost:3000
+
+docker-compose up -d --build frontend
+_____
+Loan Tracking System for Individuals
+•	A user can add a new loan (borrowed or lent) with amount and due date done
+•	A user can link a loan to a contact (borrower or lender) done 
+•	A user can mark a loan as paid or partially repaid done 
+•	A user can receive automatic reminders for upcoming repayments

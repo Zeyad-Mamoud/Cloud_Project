@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
   db:
     image: postgres:13
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 11020044
+      POSTGRES_PASSWORD: 0000
       POSTGRES_DB: loan_db
     volumes:
       - db_data:/var/lib/postgresql/data
@@ -13,23 +11,22 @@ services:
       - "5432:5432"
     networks:
       - loan-tracking-network
-      
+
   frontend:
     build: ./frontend
-    container_name: frontend
     ports:
       - "3000:80"
     volumes:
-      - ./frontend:/app
-      
+      - ./frontend:/app          # Only for development (hot-reload)
+    networks:
+      - loan-tracking-network
+
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    build: ./backend
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://postgres:11020044@db:5432/loan_db
+      - DATABASE_URL=postgresql://postgres:0000@db:5432/loan_db
     depends_on:
       - db
     networks:

@@ -15,12 +15,12 @@ class LoanStatus(Enum):
 
 @dataclass
 class Loan:
-    id: Optional[int] = None
+    id: Optional[int] 
     user_id: int
     contact_id: int
     amount: float
-    loan_type: LoanType  # Moved before default arguments
     due_date: date
+    loan_type: LoanType  # Moved before default arguments
     currency: str = "USD"  # Default argument
     description: Optional[str] = None  # Default argument
     status: LoanStatus = LoanStatus.PENDING  # Default argument
